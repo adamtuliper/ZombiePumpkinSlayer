@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>P31MetroStore</name>
+    </assembly>
+    <members>
+        <member name="T:Prime31.MetroStore.FulfillmentResult">
+            <summary>
+            Defines values used to indicate fulfillment status for an in-app consumable purchase
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.FulfillmentResult.Succeeded">
+            <summary>
+            The in-app consumable purchase was fulfilled
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.FulfillmentResult.NothingToFulfill">
+            <summary>
+            The specified transaction ID has been passed or the consumables assoc transaction ID has already been fulfilled
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.FulfillmentResult.PurchasePending">
+            <summary>
+            The purchase has not yet cleared. At this point it is still possible for the transaction to be reversed due to provider
+            failures and/or risk checks
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.FulfillmentResult.PurchaseReverted">
+            <summary>
+            The purchase request has been reverted
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.FulfillmentResult.ServerError">
+            <summary>
+            There was an issue receiving fulfillment status
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.LicenseInformation">
+            <summary>
+            Provides access to the current app's license metadata
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.LicenseInformation.#ctor(Windows.ApplicationModel.Store.LicenseInformation)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="licenseInfo"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.LicenseInformation.ToString">
+            <summary>
+            Override
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroStore.LicenseInformation.expirationDate">
+            <summary>
+            Gets the license expiration date and time relative to the system clock
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.LicenseInformation.isActive">
+            <summary>
+            Gets the value that indicates whether the license is active
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.LicenseInformation.isTrial">
+            <summary>
+            Gets the value that indicates whether the license is a trial license
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.LicenseInformation.productLicenses">
+            <summary>
+            Gets the associative list of licenses for the app's features that can be bought through an in-app purchase
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.ListingInformation">
+            <summary>
+             Provides the listing info that describes the app in the Windows Store.
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.ListingInformation.#ctor(Windows.ApplicationModel.Store.ListingInformation)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.ListingInformation.ToString">
+            <summary>
+            Override
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroStore.ListingInformation.ageRating">
+            <summary>
+            Gets the age rating for the app.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ListingInformation.currentMarket">
+            <summary>
+            Gets the value that indicates the customer's market, such as en-us, that will be used for transactions in the current session.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ListingInformation.description">
+            <summary>
+            Gets the app's description in the current market.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ListingInformation.formattedPrice">
+            <summary>
+            Gets the app's purchase price formatted for the current market and currency.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ListingInformation.name">
+            <summary>
+            Gets the app's name in the current market.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ListingInformation.productListings">
+            <summary>
+            Gets information about the features and products that can be bought by making in-app purchases.
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.ProductLicense">
+            <summary>
+            Provides info about a license that is associated with an in-app offer
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.ProductLicense.#ctor(Windows.ApplicationModel.Store.ProductLicense)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="productLicense"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.ProductLicense.ToString">
+            <summary>
+            Override
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductLicense.expirationDate">
+            <summary>
+            Gets the expiration date and time of the license
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductLicense.isActive">
+            <summary>
+            Gets the value that indicates whether the feature's license is active
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductLicense.productId">
+            <summary>
+            Gets the ID of an app's in-app offer
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.ProductListing">
+            <summary>
+             Provides localized info about an in-app offer in your app.
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.ProductListing.#ctor(Windows.ApplicationModel.Store.ProductListing)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.ProductListing.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductListing.formattedPrice">
+            <summary>
+            Gets the app's purchase price with the appropriate formatting for the current market.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductListing.name">
+            <summary>
+            Gets the descriptive name of the product or feature that can be shown to customers in the current market.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductListing.productId">
+            <summary>
+            Gets the ID of an app's feature or product.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.ProductListing.productType">
+            <summary>
+            Gets the type of this product. Possible values are defined by ProductType
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.ProductPurchaseStatus">
+            <summary>
+            Defines values used to indicate the transaction status of an in-app purchase
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductPurchaseStatus.Succeeded">
+            <summary>
+            The purchase succeeded and the user has been informed
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductPurchaseStatus.AlreadyPurchased">
+            <summary>
+            The purchase did not occur because this in-app purchase has already been purchased by the user, and it cannot be purchased again
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductPurchaseStatus.NotFulfilled">
+            <summary>
+            The purchase did not occur because a previous purchase of this consumable has not been fulfilled
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductPurchaseStatus.NotPurchased">
+            <summary>
+            The purchase did not occur because the user decided not to complete the purchase (or the purchase failed for other reasons)
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.ProductType">
+            <summary>
+            Specifies the product type for a product
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductType.Unknown">
+            <summary>
+            The product type is unknown
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductType.Durable">
+            <summary>
+            A durable product
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroStore.ProductType.Consumable">
+            <summary>
+            A consumable product
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.PurchaseResults">
+            <summary>
+            Contains information detailing the results of an in-app purchase
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.PurchaseResults.#ctor(Windows.ApplicationModel.Store.PurchaseResults)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.PurchaseResults.ToString">
+            <summary>
+            Override
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroStore.PurchaseResults.offerId">
+            <summary>
+            A unique ID used to identify a specific in-app purchase item within a large purchase catalog
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.PurchaseResults.receiptXml">
+            <summary>
+            A full receipt that provides a transaction history for the in-app purchase.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.PurchaseResults.status">
+            <summary>
+            The current state of the in-app purchase
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.PurchaseResults.transactionId">
+            <summary>
+            A unique transaction ID associated with a purchase of the consumable
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.Store">
+            <summary>
+            When testing, you must first setup an xml file that the Store will use to simulate with. The format for the file is described
+            here: http://msdn.microsoft.com/en-us/library/windows/apps/windows.applicationmodel.store.currentappsimulator.aspx
+            
+            If you call loadTestingLicenseXmlFile then it will trigger the plugin to use the simulator. If you do not call loadTestingLicenseXmlFile
+            than the real store API will be used.
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.loadTestingLicenseXmlFile(System.String,System.Action{Prime31.MetroStore.ListingInformation})">
+            <summary>
+            Loads the xml file that the CurrentAppSimulator uses to emulate the store. Automatically fetches listing information for you as well.
+            </summary>
+            <param name="relativePathToFile"></param>
+            <param name="completionHandler"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.loadListingInformation(System.Action{Prime31.MetroStore.ListingInformation})">
+            <summary>
+            Loads listing information and fires completingHandler with the data once loading completes
+            </summary>
+            <param name="completionHandler"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.getLicenseInformation">
+            <summary>
+            Fetches the current LicenseInformation. If in testing mode it will be from the app simulator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.requestAppPurchase(System.Action{System.Boolean})">
+            <summary>
+            Requests a purchase of the application. completionHandler gets called with either true or false indicating if
+            the app was purchased.
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.getAppReceipt">
+            <summary>
+            Gets the app receipt. If in testing mode the simulator receipt will be returned.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.isInTrialMode">
+            <summary>
+            Fetches the license information and returns the isTrial bool
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.requestProductPurchase(System.String,System.Action{Prime31.MetroStore.PurchaseResults,System.Exception})">
+            <summary>
+            Requests a product purchase for the given productId. completionHandler gets called with either true or false indicating if
+            the item was purchased.
+            </summary>
+            <param name="productId"></param>
+            <param name="completionHandler"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.getProductLicense(System.String)">
+            <summary>
+            Gets a product license for the given productId. Returns null if no lincese exists for the product.
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.getProductReceipt(System.String)">
+            <summary>
+            Gets the product receipt for the given productId.
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.reportConsumableFulfillment(System.String,System.Guid,System.Action{Prime31.MetroStore.FulfillmentResult,System.Exception})">
+            <summary>
+            Reports a consumable as fullfilled. You should call this once you have granted the consumable to the player.
+            </summary>
+            <param name="productId"></param>
+            <param name="transactionId"></param>
+            <param name="completionHandler"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.Store.loadUnfulfilledConsumables(System.Action{Prime31.MetroStore.UnfulfilledConsumable,System.Exception})">
+            <summary>
+            Fetches any unfulfilled consumables. The completion handler will be called once for each unfulfilled consumable found.
+            </summary>
+            <param name="completionHandler"></param>
+        </member>
+        <member name="E:Prime31.MetroStore.Store.licenseChangedEvent">
+            <summary>
+            Fired when the license changes. This could mean the app was purchased or a product was purchased. Your previous
+            actions should clue you in on to why the event is firing.
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroStore.UnfulfilledConsumable">
+            <summary>
+            Contains purchase and product information for an unfulfilled consumable
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroStore.UnfulfilledConsumable.#ctor(Windows.ApplicationModel.Store.UnfulfilledConsumable)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:Prime31.MetroStore.UnfulfilledConsumable.ToString">
+            <summary>
+            Override
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroStore.UnfulfilledConsumable.offerId">
+            <summary>
+            A unique ID used to identify a specific in-app purchase item within a large purchase catalog
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.UnfulfilledConsumable.productId">
+            <summary>
+            A unique ID used to identify the product offered by this consumable
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroStore.UnfulfilledConsumable.transactionId">
+            <summary>
+            A unique transaction ID associated with a purchase of the consumable
+            </summary>
+        </member>
+    </members>
+</doc>

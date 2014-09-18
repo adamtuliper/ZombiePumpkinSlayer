@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>P31MetroEssentials</name>
+    </assembly>
+    <members>
+        <member name="T:Prime31.MetroEssentials.PushNotificationChannel">
+            <summary>
+            Data class to hold information about a push channel
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.PushNotificationChannel.#ctor(Windows.Networking.PushNotifications.PushNotificationChannel)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.PushNotificationChannel.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroEssentials.PushNotificationChannel.nativeChannel">
+            <summary>
+            Holds the native PushNotificationChannel. Used to add push event listeners and close the channel if neccessary.
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroEssentials.PushNotificationChannel.expirationTime">
+            <summary>
+            Gets the time at which the channel expires. Notifications sent to this channel after this time are rejected
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroEssentials.PushNotificationChannel.uri">
+            <summary>
+            Gets the Uniform Resource Identifier (URI) to which an app server sends a push notification intended for an application or secondary tile bound to this channel
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroEssentials.Utils">
+            <summary>
+            Helper class to bridge missing features
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Utils.writeAllText(System.String,System.String)">
+            <summary>
+            Writes a file into the ApplicationData.Current.LocalFolder
+            </summary>
+            <param name="fileName"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Utils.writeAllBytes(System.String,System.Byte[])">
+            <summary>
+            Writes a file into the ApplicationData.Current.LocalFolder
+            </summary>
+            <param name="fileName"></param>
+            <param name="bytes"></param>
+        </member>
+        <member name="T:Prime31.MetroEssentials.RoamingSettings">
+            <summary>
+            RoamingSettings are stored and synced across all computers owned by the user
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.clearAllApplicationData">
+            <summary>
+            Removes all application data from local, roaming and temp storage
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.setValueForKey(System.String,System.Object)">
+            <summary>
+            Sets the value for the key
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.valueForKey(System.String)">
+            <summary>
+            Gets the value for the key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.valueForKey(System.String,System.Object)">
+            <summary>
+            Gets the value for the key with a default value if it doesnt exist
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.deleteValueForKey(System.String)">
+            <summary>
+            Deletes the value assoicated with the key
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.allKeys">
+            <summary>
+            Gets all the currently stored keys
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.setValueForKeyInContainer(System.String,System.String,System.Object)">
+            <summary>
+            Sets the value for the key in the specified container
+            </summary>
+            <param name="containerName"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.valueForKeyInContainer(System.String,System.String)">
+            <summary>
+            Gets the value for the key in the specified container
+            </summary>
+            <param name="containerName"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.valueForKeyInContainer(System.String,System.String,System.Object)">
+            <summary>
+            Gets the value for the key in the specified container with a default value if it doesnt exist
+            </summary>
+            <param name="containerName"></param>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.deleteValueForKeyInContainer(System.String,System.String)">
+            <summary>
+            Deletes the value assoicated with the key in the specified container
+            </summary>
+            <param name="containerName"></param>
+            <param name="key"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.deleteContainer(System.String)">
+            <summary>
+            Deletes the container
+            </summary>
+            <param name="containerName"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.RoamingSettings.allContainers">
+            <summary>
+            Gets an array of all the currently used containers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Prime31.MetroEssentials.RoamingSettings.roamingFolder">
+            <summary>
+            Full path to the roaming folder so you can drop files in there to be synced
+            </summary>
+        </member>
+        <member name="P:Prime31.MetroEssentials.RoamingSettings.roamingStorageQuota">
+            <summary>
+            Current storage quota
+            </summary>
+        </member>
+        <member name="E:Prime31.MetroEssentials.RoamingSettings.dataChangedEvent">
+            <summary>
+            Fired when data in RoamingSettings changes
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroEssentials.SettingsPane">
+            <summary>
+            Provides access to the SettingsPane from the charms panel
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.SettingsPane.show">
+            <summary>
+            Shows the settings pane
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.SettingsPane.registerSettingsCommand(System.String,System.String)">
+            <summary>
+            Registers a settings item with an associated message that will be displaed in a popup when clicked
+            </summary>
+            <param name="title"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.SettingsPane.registerSettingsCommand(System.String,System.Action)">
+            <summary>
+            Registers a settings item with an action. When the settings item is clicked the action will be called.
+            </summary>
+            <param name="title"></param>
+            <param name="onActivated"></param>
+        </member>
+        <member name="T:Prime31.MetroEssentials.Sharing">
+            <summary>
+            Set the title, description, text and url fields for use with the share charm. null out the fields when you no longer want to use them.
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroEssentials.Sharing.title">
+            <summary>
+            Title to be displayed in the sharing pane
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroEssentials.Sharing.description">
+            <summary>
+            Description to be displayed in the sharing pane
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroEssentials.Sharing.text">
+            <summary>
+            Text to share
+            </summary>
+        </member>
+        <member name="F:Prime31.MetroEssentials.Sharing.url">
+            <summary>
+            Url to share
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Sharing.showShareUI">
+            <summary>
+            Opens the share panel
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroEssentials.Snap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Snap.registerForSnapChanges(System.Action{System.Double,System.Double})">
+            <summary>
+            Registers an action for size changed events. The Action will be fired with two doubles: width and height.
+            </summary>
+            <param name="sizeChangedAction"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Snap.registerForSnapChanges(System.Action{System.Double,System.Double},System.Boolean)">
+            <summary>
+            Registers an action for size changed events with the option to automatically attempt to unsnap when your app is snapped
+            </summary>
+            <param name="sizeChangedAction"></param>
+            <param name="attemptToAutomaticallyUnsnap"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Snap.deregisterAllSnapListeners">
+            <summary>
+            Removes all registered snap listeners
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroEssentials.Tiles">
+            <summary>
+            queues: http://msdn.microsoft.com/en-us/library/windows/apps/hh781199.aspx
+            templates: http://msdn.microsoft.com/en-US/library/windows/apps/hh761491.aspx - http://msdn.microsoft.com/en-us/library/windows/apps/br208621.aspx
+            badges: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh779719.aspx
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.startPeriodicUpdate(System.String,Prime31.MetroEssentials.PeriodicUpdateRecurrence)">
+            <summary>
+            Starts a periodic updater for tile updates from your server
+            </summary>
+            <param name="url"></param>
+            <param name="periodicUpdateRecurrenceType"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.startPeriodicUpdate(System.String,Prime31.MetroEssentials.PeriodicUpdateRecurrence,System.Nullable{System.DateTime})">
+            <summary>
+            Starts a periodic updater for tile updates from your server with optional start time
+            </summary>
+            <param name="url"></param>
+            <param name="periodicUpdateRecurrenceType"></param>
+            <param name="startTime"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.stopPeriodicUpdate">
+            <summary>
+            Stops the periodic updater for tile updates
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.enableNotificationQueue(System.Boolean)">
+            <summary>
+            Enables/Disables the notification queue for tiles (http://msdn.microsoft.com/en-us/library/windows/apps/hh781199.aspx)
+            </summary>
+            <param name="enable"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.updateTile(System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Updates a tile with the provided raw xml 
+            </summary>
+            <param name="xml"></param>
+            <param name="expirationTime"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.updateTile(Prime31.MetroEssentials.TileTemplateType,System.String[])">
+            <summary>
+            Updates a tile with the template type and text. The number of items in the text array must match the template!
+            </summary>
+            <param name="tileTemplateType"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.updateTile(Prime31.MetroEssentials.TileTemplateType,System.String[],System.String[])">
+            <summary>
+            Updates a tile with the template type and text. The number of items in the text and images arrays must match the template!
+            It is valid to pass in null for either array if the template has no elements of that type.
+            </summary>
+            <param name="tileTemplateType"></param>
+            <param name="text"></param>
+            <param name="images"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.updateTile(Prime31.MetroEssentials.TileTemplateType,System.String[],System.String[],System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Updates a tile with the template type, text, images and optional expiration time. The number of items in the text and images arrays must match the template!
+            It is valid to pass in null for either array if the template has no elements of that type.
+            </summary>
+            <param name="tileTemplateType"></param>
+            <param name="text"></param>
+            <param name="images"></param>
+            <param name="expirationTime"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.getTemplateContent(Prime31.MetroEssentials.TileTemplateType)">
+            <summary>
+            Gets the raw XML for the given template. This is useful if you want to fully customize it yourself.
+            </summary>
+            <param name="tileTemplateType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.clearTile">
+            <summary>
+            Clears any set tiles
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.updateBadge(System.String)">
+            <summary>
+            Updates the badge on the tile. value can be either a number (0 - 100) or one of the available badge glyphs (http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh779719.aspx)
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Tiles.clearBadge">
+            <summary>
+            Clears the badge from the tile
+            </summary>
+        </member>
+        <member name="T:Prime31.MetroEssentials.Toasts">
+            <summary>
+            Toast templates: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh761494.aspx
+            Toasts must be enabled in the Package.appxmanifest file via the "Toast Capable" setting. The plugin will not automatically
+            turn these on for you in case you do not intend to use toasts
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.createPushNotificationChannelForApplication(System.Action{Prime31.MetroEssentials.PushNotificationChannel,System.Exception})">
+            <summary>
+            Creates a push notification channel
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.createPushNotificationChannelForSecondaryTile(System.String,System.Action{Prime31.MetroEssentials.PushNotificationChannel,System.Exception})">
+            <summary>
+            Creates a push notification channel for the secondary tile
+            </summary>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.scheduleToast(Prime31.MetroEssentials.ToastTemplateType,System.String[],System.DateTimeOffset)">
+            <summary>
+            Schedules a toast with the template type and text. The number of items in the text array must match the template!
+            </summary>
+            <param name="toastTemplateType"></param>
+            <param name="text"></param>
+            <param name="deliveryTime"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.scheduleToast(Prime31.MetroEssentials.ToastTemplateType,System.String[],System.String,System.DateTimeOffset)">
+            <summary>
+            Schedules a toast with the template type, text and image. The number of items in the text array must match the template!
+            </summary>
+            <param name="toastTemplateType"></param>
+            <param name="text"></param>
+            <param name="image"></param>
+            <param name="deliveryTime"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.showToast(Prime31.MetroEssentials.ToastTemplateType,System.String[])">
+            <summary>
+            Shows a toast with the template type and text. The number of items in the text array must match the template!
+            </summary>
+            <param name="toastTemplateType"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.showToast(Prime31.MetroEssentials.ToastTemplateType,System.String[],System.String)">
+            <summary>
+            Shows a toast with the template type, text and image. The number of items in the text array must match the template!
+            </summary>
+            <param name="toastTemplateType"></param>
+            <param name="text"></param>
+            <param name="image"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.showToast(Prime31.MetroEssentials.ToastTemplateType,System.String[],System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Shows a toast with the template type, text, image and expiration time. The number of items in the text array must match the template!
+            </summary>
+            <param name="toastTemplateType"></param>
+            <param name="text"></param>
+            <param name="image"></param>
+            <param name="expirationTime"></param>
+        </member>
+        <member name="M:Prime31.MetroEssentials.Toasts.showToast(Prime31.MetroEssentials.ToastTemplateType,System.String[],System.String,System.Nullable{System.DateTimeOffset},System.Action{System.String},System.Action,System.Action{System.Exception})">
+            <summary>
+            Shows a toast with the template type, text, image and expiration time. The number of items in the text array must match the template!
+            Optional handlers can be passed in to receive updates when the toast events fire.
+            </summary>
+            <param name="toastTemplateType"></param>
+            <param name="text"></param>
+            <param name="image"></param>
+            <param name="expirationTime"></param>
+            <param name="dismissedHandler"></param>
+            <param name="activatedHandler"></param>
+            <param name="failedHandler"></param>
+        </member>
+    </members>
+</doc>
