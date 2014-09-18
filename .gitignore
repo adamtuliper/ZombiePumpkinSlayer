@@ -6,6 +6,7 @@ Obj/
 UnityGenerated/
 Library/
 Builds/
+*.dotsettings
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
