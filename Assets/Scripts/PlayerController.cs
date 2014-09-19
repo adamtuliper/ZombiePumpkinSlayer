@@ -35,17 +35,17 @@ public class PlayerController : MonoBehaviour
         _animator = this.GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        //Ensure this object can't leave the bounds of the spawn points.
+        this._boundary.zMax = GameObject.FindGameObjectWithTag("SpawnRight").transform.position.z;
+        this._boundary.zMin = GameObject.FindGameObjectWithTag("SpawnLeft").transform.position.z;
+    }
     void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
             _jumping = true;
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            _smashing = true;
-            _animator.SetTrigger("Smash");
         }
 
         if (Input.GetButtonDown("Fire1"))

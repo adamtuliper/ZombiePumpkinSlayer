@@ -9,6 +9,11 @@ public class ScreenManager : MonoBehaviour
     //Unity will tell us otherwise (ie if its a resume)
     private bool _gameJustLaunched = true;
     private bool _showResume;
+    
+    /// <summary>
+    /// The game object containing the pause screen implementation/graphics/button
+    /// </summary>
+    [SerializeField]
     private GameObject _paused;
 
     public bool Paused { get; set; }
@@ -49,8 +54,8 @@ public class ScreenManager : MonoBehaviour
     {
         //Dont need a ref to the texture (guitexture), just the container (gameobject)
         //pause game object has a guitexture in it. Its position (transform) should be .5x, .5y to center
-        _paused = GameObject.FindGameObjectWithTag("Pause");
-        if (_paused)
+        //_paused = GameObject.FindGameObjectWithTag("Pause");
+        if (!_paused)
         {
             Debug.LogError("Missing a game object tagged 'pause', this is the item shown when the game is paused.");
         }

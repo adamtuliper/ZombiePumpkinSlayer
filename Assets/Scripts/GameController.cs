@@ -42,21 +42,36 @@ public class GameController : MonoBehaviour
     private RectTransform _healthMaskTransform;
 
     private float _initialHealthMaskWidth;
-    private const int InitialHealth = 10;
+    private const int InitialHealth = 7;
     private float _healthMaskHeight;
+    
+    /// <summary>
+    /// The game object containing all resurrect dialog stuff to show.
+    /// </summary>
+    [SerializeField]
     private GameObject _resurrectDialog;
     void Start()
     {
 #if UNITY_METRO
         SettingsPane.registerSettingsCommand("Privacy Policy", "This is my privacy policy. Consider a url as well to bring you to the site.");
+        
+        //Set the live tile. You can set a source as an internet url as well.
+        //This format simply means 'within the windows store application, look at the assets folder'
+        //You'll want to make sure this image appears in the generated visual studio project, as it won't 
+        //get pushed from Unity in any way. 
+        var images = new string[] { "ms-appx:///assets/310x150_attacking.png" };
+        Tiles.updateTile(TileTemplateType.TileWideImage, null, images); 
 #endif
 
         //Find the cross
         _tombstonePosition = GameObject.FindGameObjectWithTag("Cross").transform;
         _healthMaskTransform = GameObject.Find("HealthMask").GetComponent<RectTransform>();
-        _resurrectDialog = GameObject.Find("ResurrectDialog");
-        _resurrectDialog.SetActive(false);
-
+        
+        //Since inactive gameobjects aren't searched (except by the FindObjectsOfTypeAll hack/deprecation)
+        if (!_resurrectDialog)
+        {
+            Debug.LogError("Assign the ResurrectDialog dialog reference through the editor.");
+        }
         //Store the height/width of the mask. We'll move the mask back to adjust health later.
         _initialHealthMaskWidth = _healthMaskTransform.sizeDelta.x;
         _healthMaskHeight = _healthMaskTransform.sizeDelta.y;
@@ -67,6 +82,8 @@ public class GameController : MonoBehaviour
         {
             Debug.LogError("A trashman component wasn't found (an object pool) in this scene. Create one or comment this code out and use the SpawnWithoutPooling below instead of SpawnWitPooling");
         }
+
+        //Kick off the routine to keep generating waves of pumpkins
         StartCoroutine(SpawnWaves());
         
     }
@@ -149,11 +166,14 @@ public class GameController : MonoBehaviour
 
     public void DecrementCrossHealth()
     {
+        Debug.Log("Cross health decremented, triggered from animation event");
         if (_crossHealth <= 0) return;
         _crossHealth--;
-
+        if (_crossHealth == 0)
+        {
+            ShowResurrectPurchase();
+        }
         StartCoroutine(CoApplyCrossHit());
-        ShowResurrectPurchase();
         //Apply mask to health bar to make it smaller. This will in turn show less of the health bar.
         //The mask simply covers the underlying gameobject. Where the mask is, it shows through to the health bar.
         //If the mask is smaller, we see less of the health bar.
@@ -168,6 +188,7 @@ public class GameController : MonoBehaviour
 
         //Swap out the color for a damage color
         _crossRenderer.material.color = _hitColors[0];
+
         yield return new WaitForSeconds(.2f);
         _crossRenderer.material.color = _hitColors[1];
     }

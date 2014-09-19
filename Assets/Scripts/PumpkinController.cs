@@ -15,6 +15,9 @@ public class PumpkinController : MonoBehaviour
     private Animator _animator;
     private Vector3 _forward;
     private Transform _particleTransform;
+    
+    //Keeps track if we're in attack mode when in range of target (cross)
+    private bool _inAttackRangeOfCross = false;
 
     [SerializeField]
     private GameObject _particleSystem;
@@ -78,25 +81,26 @@ public class PumpkinController : MonoBehaviour
 
     public void AttackCross()
     {
-        _animator.SetTrigger("Bite");
-        _gameController.DecrementCrossHealth();
-        //StartCoroutine(CoAttackCross());
+        StartCoroutine(CoAttackCross());
     }
 
-    private void DecrementCrossHealthFromAnimation()
+    public void DecrementCrossHealth()
     {
         _gameController.DecrementCrossHealth();
     }
+
     private IEnumerator CoAttackCross()
     {
-        //make the pumpkin bite
-        _animator.SetTrigger("Bite");
 
-        //float randomTime = Random.Range(.1f, 2f) * .1f;
-        //Debug.Log("RandomTime:" + randomTime);
-        yield return new WaitForSeconds(Random.Range(1, 4));
-        yield return null; //we loop until I'm dead.
-
+        //We loop until I'm dead or out of range
+        while (_inAttackRangeOfCross)
+        {   
+            //make the pumpkin bite
+            _animator.SetTrigger("Bite");
+            _gameController.DecrementCrossHealth();
+            yield return new WaitForSeconds(Random.Range(1.0f, 2.0f));
+        }
+        
     }
 
     /// <summary>
@@ -114,6 +118,30 @@ public class PumpkinController : MonoBehaviour
         gameObject.SetActive(true);
         _health = InitialHealth;
         StopAllCoroutines();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Pumpkin collided with " + collision.gameObject.name);
+        var go = collision.gameObject;
+        if (go.tag == "CrossCenter")
+        {
+            //Get the pumpkins controller and tell it to act.
+            _inAttackRangeOfCross = true;
+            AttackCross();
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        
+        Debug.Log("Pumpkin collided with " + collision.gameObject.name);
+        var go = collision.gameObject;
+        if (go.tag == "CrossCenter")
+        {
+			//stop attacking the cross.
+            _inAttackRangeOfCross = false;
+        }
     }
 
 
