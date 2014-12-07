@@ -28,9 +28,18 @@ public class InAppPurchases : MonoBehaviour
 	
 	// Update is called once per frame
 	void PurchaseResurrection () {
-        Store.requestAppPurchase(didPurchase =>
+        Store.requestProductPurchase("resurrection", (purchaseResult,anyException) =>
         {
-            Debug.Log("in-app purchase result. didPurchase: " + didPurchase);
+            if (purchaseResult.status == ProductPurchaseStatus.Succeeded ||
+                purchaseResult.status == ProductPurchaseStatus.AlreadyPurchased)
+            {
+                //Enable whatever - we just purchased it (or own it)
+                Debug.Log("in-app purchase result. purchaseResult: " + purchaseResult.receiptXml);
+            }
+            else
+            {
+                Debug.Log("Did not purchase it, purchaseResult was:" + purchaseResult.status);
+            }
         });
         //hide the dialog
 	    _gameController.HideResurrectPurchase();
